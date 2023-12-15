@@ -1,0 +1,24 @@
+<% if user_signed_in? %>
+  <h3>user: <%= current_user.username %></h3>
+  <%= current_user.admin? ? "role : admin" : "" %>
+  <%= !current_user.admin? ? "role : student" : "" %>
+<% end %>
+<nav>
+  <% if user_signed_in? %>
+    <% unless current_user.admin? %>
+      <%= link_to "my requests",request_path(current_user.id) %>
+      <% else %>
+        <%= link_to "questions",questions_path %>
+        <%= link_to "create questions",new_question_path %>
+        <%= link_to "users info",users_path %>
+        <%= link_to "requests",requests_path %>
+    <% end %>
+
+    <%= link_to "subjects",subjects_path %>
+    <%= link_to "lecturers",lectures_path %>
+    <%= link_to "log out",destroy_user_session_path,data:{turbo_method: :delete} %>
+    <% else %>
+  <%= link_to "log in",new_user_session_path %>
+    <%= link_to "sign up",new_user_registration_path %>
+  <% end %>
+</nav>

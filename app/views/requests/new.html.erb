@@ -1,0 +1,8 @@
+<%= form_with model: @request,url: lecture_requests_path(@lecturer) do |f| %>
+
+  <%= f.datetime_field :lecture_start %>
+  <%= f.datetime_field :lecture_end %>
+
+  <%= f.submit %>
+
+<% end %>

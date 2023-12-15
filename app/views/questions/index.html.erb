@@ -1,0 +1,6 @@
+<% @questions.each do |f| %>
+  <h5>
+    <%= f.question %>
+    <%= button_to "delete",question_path(f.id), method: :delete %>
+  </h5>
+<% end %>

@@ -1,0 +1,46 @@
+<%= flash[:notice] %>
+
+<h1>My requests</h1>
+
+<%= form_with(url: request_path(params[:id]), method: :get) do |form| %>
+  <%= form.label :subject %>
+  <%= form.select :subject, options_for_select(Subject.pluck(:title),params[:subject]), include_blank: true %>
+  <%= form.submit "Filter" %>
+<% end %>
+
+
+<% @requests.each do |request| %>
+    <p>
+      <strong>Code: </strong>
+      <%= request[:request_code] %>
+    </p>
+
+  <p>
+    <strong>subject: </strong>
+    <% sub = Subject.find_by(id: request.lecturer_id)  %>
+    <%= sub.title %>
+  </p>
+  <p>
+    <strong>date: </strong>
+    <%= request[:date] %>
+  </p>
+
+  <p>
+    <strong>lecturer: </strong>
+    <% lect = Lecture.find_by(id: request.lecturer_id)  %>
+    <%= lect.title %>
+  </p>
+  <p>
+    <strong>lecture_start: </strong>
+    <%= request[:lecture_start] %>
+  </p>
+  <p>
+    <strong>lecture_end: </strong>
+    <%= request[:lecture_end] %>
+  </p>
+  <p>
+    <strong>actual lecture hours: </strong>
+    <%= request[:actual_lecture_hours] %>
+  </p>
+-------
+<% end %>

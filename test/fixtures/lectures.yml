@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  lecture_start: 2023-12-15 10:16:38
+  lecture_end: 2023-12-15 10:16:38
+
+two:
+  title: MyString
+  lecture_start: 2023-12-15 10:16:38
+  lecture_end: 2023-12-15 10:16:38

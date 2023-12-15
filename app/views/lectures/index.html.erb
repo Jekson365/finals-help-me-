@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Lecturers</h1>
+
+<div id="lectures">
+  <% @lectures.each do |lecture| %>
+    <%= render "lecture",lecture: lecture %>
+    <p>
+      <%#= link_to "Show this lecture", lecture %>
+      <% user_signed_in? && if !current_user.admin? %>
+        <%= link_to "make a request",new_lecture_request_path(lecture.id)%>
+      <% end  %>
+    </p>
+    -----
+  <% end %>
+</div>
+
+<%= link_to "New lecture", new_lecture_path %>
